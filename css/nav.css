@@ -1,8 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
 .tab-content {
-    position:absolute;
+    position:fixed;
     overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
     width:100%;
     
     
@@ -250,4 +251,5 @@ left: 35%;
 .board-inner {
 	margin:0 auto;
 	max-width:900px;
+
 }
