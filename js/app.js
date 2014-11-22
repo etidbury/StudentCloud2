@@ -39,7 +39,14 @@ studentCloudApp.config(['$routeProvider','$httpProvider',
             templateUrl:'view/error-404.html'
       });
 
-      
+
+
+
+
+
+
+
+
 
 
 
