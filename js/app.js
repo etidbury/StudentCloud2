@@ -39,6 +39,10 @@ studentCloudApp.config(['$routeProvider','$httpProvider',
             templateUrl:'view/error-404.html'
       });
 
+      
+
+
+
       $httpProvider.interceptors.push(function($q) {
 
           return {
