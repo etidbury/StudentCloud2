@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="StudentCloud">
+    <serverData>
+      <paths name="StudentCloud">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/cmt3313/edd/" local="$PROJECT_DIR$" web="http://buildapp.co.uk/edd" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
+

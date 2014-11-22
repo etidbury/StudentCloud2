@@ -1,0 +1,38 @@
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <h2>Personal</h2>
+    <p>...</p>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <h2>Shared</h2>
+    <p>...</p>
+</div>
+
+<div class="container-fluid" ng-controller="FileListCtrl">
+    <div class="row">
+        <div class="col-md-2">
+            <!--Sidebar content-->
+
+            Search: <input ng-model="query">
+            Sort by:
+            <select ng-model="orderProp">
+                <option value="name">Alphabetical</option>
+                <option value="age">Newest</option>
+            </select>
+
+        </div>
+        <div class="col-md-10">
+            <!--Body content-->
+
+            <ul class="phones">
+
+                <li ng-repeat="customer in customers | filter:query | orderBy:orderProp" class="thumbnail">
+                    <a href="#country/{{customer.Country}}" class="thumb">{{customer.Country}}</a>
+                    <p>{{customer.Name}}</p>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
