@@ -1,0 +1,1 @@
+<?php/** * Created by PhpStorm. * User: Admin * Date: 10/05/14 * Time: 15:17 */class HighException extends CustomException{}class InvoiceFailure extends HighException {}class EmailFailure extends HighException {}class DBFailure extends HighException {}class ClassNotFound extends HighException {}
