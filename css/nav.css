@@ -1,5 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
+.noselect {
+    -moz-user-select:none;
+    -webkit-user-select:none;
+}
 .tab-content {
     position:fixed;
     overflow-y:scroll;
@@ -7,10 +11,8 @@
     width:100%;
     
     
-    max-height: 100%; /* fallback if needed */
-	  max-height:calc(100% - 110px);	/* minus shift amount */
-
-
+    height: 100%; /* fallback if needed */
+    height:calc(100% - 110px);	/* minus shift amount */
 }
 
 
@@ -30,9 +32,10 @@
     position: relative;
     /* border-bottom: 0; */
     /* width: 80%; */
-   
+    border-bottom: none;
     margin-bottom: 0;
     box-sizing: border-box;
+
 
 }
 
@@ -253,3 +256,4 @@ left: 35%;
 	max-width:900px;
 
 }
+

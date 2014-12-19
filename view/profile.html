@@ -1,1 +1,53 @@
-<h1>Profile</h1>
+<section ng-controller="ProfileCtrl">
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Edd Tidbury</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>{{uad.firstName + " "+uad.lastName}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Joined</td>
+                                    <td>{{uad.timeRegistered | amCalendar}}</td>
+
+                                </tr>
+                                <tr>
+
+                                <tr>
+                                    <td>Primary Email</td>
+                                    <td>{{uad.primaryEmail}}<button class="btn btn-primary" style="margin-top:10px; display: block;" ng-click="updatePrimaryEmail();" disabled="disabled">Update</button> </td>
+                                </tr>
+
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+
+
+                            <a type="button" class="btn btn-sm btn-danger" ng-click="logout()"><i class="glyphicon glyphicon-remove"></i> Logout</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+    </section>

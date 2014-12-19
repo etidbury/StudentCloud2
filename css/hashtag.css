@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+.hashtag-list {
+  margin:0;
+  padding:0;
+  
+}
+li.hashtag-item {
+  display:inline-block;
+ 
+  background-color: #efefef;
+  padding:0 3px;
+  margin:3px 0 0 0;
+  color:#0000EE;
+  cursor:pointer;
+  
+  
+}
+li.hashtag-item:hover {
+  background-color: #0000EE;
+  color:white;
+}
+li.hashtag-item:before {
+  content:"#";
+}
+

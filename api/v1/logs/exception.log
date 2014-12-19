@@ -1,1 +1,35 @@
-reset
+reset[17-Dec-2014 20:40:46 Europe/London] A Fatal error has occurred <br/>SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond.
+:
+ #0 C:\x\htdocs\StudentCloud\api\v1\lib\DB.php(13): PDO->__construct('mysql:host=Stud...', 'StudentCloud', 'CMT3313db!')
+#1 C:\x\htdocs\StudentCloud\api\v1\lib\Model.php(6): DB->__construct()
+#2 C:\x\htdocs\StudentCloud\api\v1\model\authorize_model.php(6): Model->__construct()
+#3 C:\x\htdocs\StudentCloud\api\v1\lib\Controller.php(26): Authorize_Model->__construct()
+#4 C:\x\htdocs\StudentCloud\api\v1\lib\Router.php(74): Controller->loadModel('authorize')
+#5 C:\x\htdocs\StudentCloud\api\v1\index.php(34): Router->__construct()
+#6 {main}
+[17-Dec-2014 21:53:38 Europe/London] A Fatal error has occurred <br/>SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: No such host is known. :
+ #0 C:\x\htdocs\StudentCloud\api\v1\lib\DB.php(13): PDO->__construct('mysql:host=Stud...', 'StudentCloud', 'CMT3313db!')
+#1 C:\x\htdocs\StudentCloud\api\v1\lib\Model.php(6): DB->__construct()
+#2 C:\x\htdocs\StudentCloud\api\v1\model\drive_model.php(9): Model->__construct()
+#3 C:\x\htdocs\StudentCloud\api\v1\lib\Controller.php(26): Drive_Model->__construct()
+#4 C:\x\htdocs\StudentCloud\api\v1\lib\Router.php(74): Controller->loadModel('drive')
+#5 C:\x\htdocs\StudentCloud\api\v1\index.php(34): Router->__construct()
+#6 {main}
+[18-Dec-2014 22:15:43 Europe/London] A Fatal error has occurred <br/>SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond.
+:
+ #0 C:\x\htdocs\StudentCloud\api\v1\lib\DB.php(13): PDO->__construct('mysql:host=Stud...', 'StudentCloud', 'CMT3313db!')
+#1 C:\x\htdocs\StudentCloud\api\v1\lib\Model.php(6): DB->__construct()
+#2 C:\x\htdocs\StudentCloud\api\v1\model\drive_model.php(9): Model->__construct()
+#3 C:\x\htdocs\StudentCloud\api\v1\lib\Controller.php(26): Drive_Model->__construct()
+#4 C:\x\htdocs\StudentCloud\api\v1\lib\Router.php(74): Controller->loadModel('drive')
+#5 C:\x\htdocs\StudentCloud\api\v1\index.php(34): Router->__construct()
+#6 {main}
+[18-Dec-2014 22:15:54 Europe/London] A Fatal error has occurred <br/>SQLSTATE[HY000] [2002] A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond.
+:
+ #0 C:\x\htdocs\StudentCloud\api\v1\lib\DB.php(13): PDO->__construct('mysql:host=Stud...', 'StudentCloud', 'CMT3313db!')
+#1 C:\x\htdocs\StudentCloud\api\v1\lib\Model.php(6): DB->__construct()
+#2 C:\x\htdocs\StudentCloud\api\v1\model\drive_model.php(9): Model->__construct()
+#3 C:\x\htdocs\StudentCloud\api\v1\lib\Controller.php(26): Drive_Model->__construct()
+#4 C:\x\htdocs\StudentCloud\api\v1\lib\Router.php(74): Controller->loadModel('drive')
+#5 C:\x\htdocs\StudentCloud\api\v1\index.php(34): Router->__construct()
+#6 {main}

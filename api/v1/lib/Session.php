@@ -8,9 +8,10 @@ class Session
 		@session_start();
 	}
 	
-	public static function set($key, $value)
+	public static function set($key, $value,$expiry)
 	{
 		$_SESSION[$key] = $value;
+
 	}
     public static function secureStart() {
         $session_name = 'sec_session_id'; // Set a custom session name
@@ -24,6 +25,7 @@ class Session
         ini_set('session.use_only_cookies', 1); // Forces sessions to only use cookies.
 
         $cookieParams = session_get_cookie_params(); // Gets current cookies params.
+
 
         session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
 

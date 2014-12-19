@@ -17,6 +17,8 @@ class User_Model extends Model
         // throw new HighException("parm".print_r($_POST,true));
 
         $params=array();
+
+
         $params['firstName']=new ParameterValidation(2,50);
         $params['lastName']=new ParameterValidation(2,50);
         $params['personalEmail']=new ParameterValidation(3,150);
@@ -25,13 +27,15 @@ class User_Model extends Model
         $params['c_password']=$params['password'];
 
 
-
-        self::parseVars($_POST,$params);
-
-
+        $post_json = file_get_contents('php://input');
+        $postData = json_decode($post_json,true);
 
 
-        $r=$_POST;
+        self::parseVars($postData,$params);
+
+
+
+        $r=$postData;
 
 
 
@@ -114,6 +118,8 @@ class User_Model extends Model
 
         r::json(0,"Registration failed");//###REGISTER FAILED
 
+
+
     }
 
 
@@ -123,6 +129,8 @@ class User_Model extends Model
     public function getUserAccountDetails($user_id) {
 
         if (is_null($user_id)) throw new LowException("User ID not specified");
+
+        if (empty($user_id)||$user_id==-1) $user_id=Authentication::getUserID();
 
         $uam=new UserAccountManager();
         return $uam->getUserAccountDetails($user_id);

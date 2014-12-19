@@ -23,8 +23,10 @@ class UserAccountManager {
 
     public function getUserAccountDetails($user_id) {
 
-        $sth=$this->db->prepare("
 
+
+
+        $sth=$this->db->prepare("
 
 SELECT
 
@@ -49,6 +51,7 @@ FROM UserAccount LEFT JOIN PersonalDetail ON UserAccount.user_ID=PersonalDetail.
         
     }
     public function updateUserRole($user_id,$new_user_role) {
+
         $sth=$this->db->prepare("
 
             UPDATE UserAuthDetail SET user_role=:new_user_role WHERE user_ID=:user_id LIMIT 1

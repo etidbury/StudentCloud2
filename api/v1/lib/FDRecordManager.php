@@ -15,9 +15,10 @@ class FDRecordManager extends DriveManager {
     public function __construct($user_id=null) {
 
 
-
         $this->db=new DB();
 
+
+        $user_id = is_null($user_id)?Authentication::getUserID():$user_id;
 
         parent::__construct($user_id);
 
@@ -73,6 +74,8 @@ class FDRecordManager extends DriveManager {
 
 
         if ($sth->execute()) {
+
+
 
 
             $this->addFile($this->getLastInsertID(),$file_ext,$FILE_POST['tmp_name']);
@@ -147,7 +150,7 @@ class FDRecordManager extends DriveManager {
             $sth=$this->db->prepare("
 
 
-SELECT FileRecords.*,Shares.share_status,Shares.verifiedBy,Shares.timestamp AS shared_timestamp FROM FileRecords
+SELECT FileRecords.*, UNIX_TIMESTAMP(STR_TO_DATE(FileRecords.timestamp, '%Y-%m-%d %H:%i:%s')) AS unix_timestamp, Shares.share_status,Shares.verifiedBy,Shares.timestamp AS shared_timestamp FROM FileRecords
 
  LEFT JOIN Shares ON FileRecords.file_id=Shares.file_id
 
@@ -160,16 +163,24 @@ SELECT FileRecords.*,Shares.share_status,Shares.verifiedBy,Shares.timestamp AS s
 
         }else {
             $testshare=true;
+
+
+
             $sth=$this->db->prepare("
 
-
-SELECT FileRecords.*,Shares.share_status,Shares.verifiedBy,Shares.timestamp AS shared_timestamp FROM FileRecords
+SELECT FileRecords.*,Shares.share_status,Shares.verifiedBy,Shares.timestamp AS shared_timestamp, PersonalDetail.firstName AS uploaded_by FROM FileRecords
 
  LEFT JOIN Shares ON FileRecords.file_id=Shares.file_id
 
+ LEFT JOIN PersonalDetail ON FileRecords.user_id=PersonalDetail.user_id
+
+
  WHERE FileRecords.dir_id=:dir_id AND FileRecords.user_id=:user_id AND Shares.share_status=:share_status LIMIT :limit_from,:limit_length
 
+
         ");
+
+
 
             $sth->bindParam('share_status',$shareStatus,PDO::PARAM_INT);
         }

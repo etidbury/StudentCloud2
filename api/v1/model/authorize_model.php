@@ -11,29 +11,44 @@ class Authorize_Model extends Model {
     public function postCreateAuthToken() {
 
 
-        $params=array();
-        $params['email']=new ParameterValidation(3,150);
-        $params['password']=new ParameterValidation(3,25);
+        try {
 
 
-        parent::parseVars($_POST,$params);
+            $params = array();
+            $params['email'] = new ParameterValidation(3, 150);
+            $params['password'] = new ParameterValidation(3, 25);
+
+            $post_json = file_get_contents('php://input');
+            $postData = json_decode($post_json, true);
 
 
+            parent::parseVars($postData, $params);
 
-        $auth=Authentication::init();
-        $auth->loginUser($_POST['email'],$_POST['password']);
+            $auth = Authentication::init();
 
-
-        $data=array(
-
-            "user_id"=>Authentication::getUserID(),
-            "user_role"=>Authentication::getUserRole(),
-            "auth_token"=>Authentication::getAuthToken()
-        );
+            $auth::clearAuthSession();
 
 
 
-        return r::json(1,"Authorization success",$data);
+
+
+
+
+            $userDetail=$auth->loginUser($postData['email'], $postData['password']);
+
+
+
+
+
+
+
+            return r::json(AUTH_SUCCESS, "Authorization success", $userDetail);
+
+        }catch (AuthFailure $e) {
+
+            return r::json(0,$e->getMessage());
+
+        }
 
 
 
@@ -63,7 +78,7 @@ class Authorize_Model extends Model {
     public function unauthorizeUser() {
 
         if (Authentication::logout()) {
-            return r::json(SUCCESS,"Successfully un-authorized user");
+            return r::json(UNAUTH_SUCCESS,"Successfully un-authorized user");
         }else return r::json(0,"Failed to un-authorize user");
 
     }

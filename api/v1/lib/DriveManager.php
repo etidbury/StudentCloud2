@@ -36,7 +36,10 @@ class DriveManager {
 
         $dir=self::$s_dir.$this->getUserID()."/";
 
-        if (file_exists($dir)) return $dir; else $this->createUserStorageDirectory();
+        if (!file_exists($dir)) $this->createUserStorageDirectory();
+
+
+        return $dir;
 
 
 
@@ -55,7 +58,11 @@ class DriveManager {
 
         if ($file_id<=0) throw new HighException("Invalid file ID specified");
 
+
+
         if (!self::isSupportedFile($file_ext)) throw new HighException("Specified file is not supported");
+
+
 
 
         if (move_uploaded_file($file_tmp,$this->getUserStorageDirectory().$file_id.".".$file_ext)) {

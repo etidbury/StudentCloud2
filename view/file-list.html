@@ -1,38 +1,72 @@
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    <h2>Personal</h2>
-    <p>...</p>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    <h2>Shared</h2>
-    <p>...</p>
-</div>
 
-<div class="container-fluid" ng-controller="FileListCtrl">
-    <div class="row">
-        <div class="col-md-2">
-            <!--Sidebar content-->
+<section ng-controller="FileListCtrl">
+<div class="container-fluid top-bar">
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 file-menu-panel">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <a class="btn btn-default dropdown-toggle btn-new">Upload </a>
+                <input type="file" name="file" class="btn btn-default dropdown-toggle btn-new file-upload-overlay" file-model="myFile">
 
-            Search: <input ng-model="query">
-            Sort by:
-            <select ng-model="orderProp">
-                <option value="name">Alphabetical</option>
-                <option value="age">Newest</option>
-            </select>
 
-        </div>
-        <div class="col-md-10">
-            <!--Body content-->
+                <div style="height:50px;"></div>
+            </div><!-- /btn-group -->
 
-            <ul class="phones">
+        </div><!-- /input-group -->
+    </div>
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 search-form">
 
-                <li ng-repeat="customer in customers | filter:query | orderBy:orderProp" class="thumbnail">
-                    <a href="#country/{{customer.Country}}" class="thumb">{{customer.Country}}</a>
-                    <p>{{customer.Name}}</p>
 
-                </li>
-            </ul>
-
+        <div class="form-group">
+            <input type="text" class="form-control" width="20" placeholder="Search files..." ng-model="query"/>
         </div>
     </div>
+
 </div>
+<div class="container">
+
+
+
+
+    <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 file-list-wrap">
+
+        <ul class="file-list">
+
+
+
+            <li class="file-item col-xs-12 col-sm-6 col-md-6 col-lg-4" ng-repeat="file in fileList | filter:query | orderBy:file.unix_timestamp" ng-show="file.file_name">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 file-item-icon-wrap" ng-switch="getDocType(file.file_ext)">
+
+
+                    <a href="{{getDirectoryPath(file)}}"><img src="{{getDirectoryPath(file)}}" ng-switch-when="image" class="file-item-tn"/>
+                    <img src="img/fi/{{getDocType(file.file_ext)}}.png" class="file-item-icon" ng-switch_default>
+                        </a>
+
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 file-item-detail-wrap">
+                    <h3><span class="file-name-wrap">{{file.file_name}}</span> <span class="file-ext">.{{file.file_ext}}</span> <span class="file-size">{{getFriendlySize(file.file_cache_size)}}</span></h3>
+
+
+                    <p class="file-description">No description. <a href="#">Edit</a></p>
+                   <!--
+                    <ul class="hashtag-list">
+                        <li class="hashtag-item">CMT3313</li>
+                        <li class="hashtag-item">RMoseley</li>
+                        <li class="hashtag-item">Report</li>
+
+                    </ul>
+                    --><hr/>
+
+                    <span class="file-detail">Uploaded <time>{{file.unix_timestamp | amCalendar}}</time> </span>
+                </div>
+
+            </li>
+
+        </ul>
+
+
+    </div>
+</div>
+
+</section>
+
 

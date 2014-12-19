@@ -3,7 +3,6 @@
 require('lib/DriveManager.php');
 require('lib/FDRecordManager.php');
 
-
 class Drive_Model extends Model {
 
     public function __construct() {
@@ -18,12 +17,11 @@ class Drive_Model extends Model {
 
 
         $fdr=new FDRecordManager();
-
-        if (isset($_FILES[0]["name"],$_FILES[0]["size"],$_FILES[0]["tmp_name"])) {
+        if (isset($_FILES['file']["name"],$_FILES['file']["size"],$_FILES['file']["tmp_name"])) {
             //
-            return $fdr->addFileRecord($_FILES[0],$user_id,$dir_id);
+            return $fdr->addFileRecord($_FILES['file'],$user_id,$dir_id);
 
-        }else throw new PostDataFailure();
+        }else throw new PostDataFailure(print_r($_FILES,true));
 
     }
     public function getUserFileList($dir_id=-1,$user_id=0,$from=0,$length=20,$shareStatus=ShareStatus::SHARE_PRIVATE) {
